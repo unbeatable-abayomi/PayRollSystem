@@ -63,7 +63,7 @@ namespace PayRollSystem
 
         public override string ToString()
         {
-            return $"{ base.ToString()}\n Total Sale {TotalSales}\n Commission Rate{CommissionRate * 100}%";
+            return $"{ base.ToString()}\n Total Sale {TotalSales}\n Commission Rate{CommissionRate * 100:C}%";
         }
 
     }

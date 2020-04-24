@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayRollSystem
 {
-    public abstract class Employee
+    public abstract class Employee:IPayment
     {
         protected string FirstName { get; set; }
         protected string LastName { get; set; }
@@ -26,5 +26,10 @@ namespace PayRollSystem
         }
 
         public abstract decimal Earnings();
+
+        public decimal GetPaymentAmount()
+        {
+            return Earnings();
+        }
     }
 }

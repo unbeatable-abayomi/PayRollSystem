@@ -60,7 +60,7 @@ namespace PayRollSystem
 
         public override string ToString()
         {
-            return $"Invoice:\n {ItemName}\n Item Description: {ItemDesc}\n Quantity: {Quantity}\n Price {Price}\n";
+            return $"Invoice:\n {ItemName}\n Item Description: {ItemDesc}\n Quantity: {Quantity}\n Price {Price:C}\n";
         }
 
     }
