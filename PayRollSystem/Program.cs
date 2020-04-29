@@ -45,7 +45,7 @@ namespace PayRollSystem
 
             Console.WriteLine("==============POLYMORPHICALLY ACCESSING METHODS OF OBJECTS FROM GENERIC COLLECTION CLASS ");
 
-            PaymentCollection<IPayment> payments = new PaymentCollection<IPayment>();
+            PaymentCollection<IPayment> payments = new PaymentCollection<IPayment>(6);
             payments.Add(salariedEmployee);
             payments.Add(commissionEmployee);
             payments.Add(hourlyEmployee);
@@ -55,18 +55,28 @@ namespace PayRollSystem
 
 
 
-            foreach (var payment in payments)
+            foreach (var payment in payments.GetAllPayments())
             {
-                Console.WriteLine(payment);
-                
-                if (payment is BasePlusCommissionEmployess)
+                try
                 {
-                    var baseEmployee = (BasePlusCommissionEmployess)payment;
-                    baseEmployee.BaseSalary *= 1.10M;
-                    Console.WriteLine($"Salary incremented by : 10% - {baseEmployee.BaseSalary}");
-                }
 
-                Console.WriteLine($"Amount to be paid: {payment.GetPaymentAmount():C}\n");
+                    Console.WriteLine(payment);
+
+                    if (payment is BasePlusCommissionEmployess)
+                    {
+                        var baseEmployee = (BasePlusCommissionEmployess)payment;
+                        baseEmployee.BaseSalary *= 1.10M;
+                        Console.WriteLine($"Salary incremented by : 10% - {baseEmployee.BaseSalary}");
+                    }
+
+                    Console.WriteLine($"Amount to be paid: {payment.GetPaymentAmount():C}\n");
+
+                }
+                catch (System.Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+              
 
             }
 
