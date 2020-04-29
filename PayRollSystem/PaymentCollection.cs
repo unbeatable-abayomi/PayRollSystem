@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Collections;
 
 namespace PayRollSystem
 {
-    class PaymentCollection <T> where T : IPayment
+    class PaymentCollection <T> where  T : IPayment
 
     {
 
@@ -52,5 +54,21 @@ namespace PayRollSystem
             //}
             
         } 
+       // public Enumerator GetEnumerator()
+        //{
+          //  foreach (T items in payments)
+            //{
+              //  yield return items;
+           // }
+       //}
+
+        public T[] GetAllPayments()
+        {
+            if(numElements > 0)
+            {
+                return payments;
+            }
+            throw new System.Exception("Payment collection is empty");
+        }
     }
 }
