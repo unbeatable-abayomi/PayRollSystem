@@ -7,9 +7,11 @@ namespace PayRollSystem
     {
         static void Main(string[] args)
         {
-           // Console.WriteLine("Hello World!");
+           
             SalariedEmployee salariedEmployee = new SalariedEmployee("james","stausrt",123,1000M);
+            Employee employee1 = salariedEmployee;
 
+            
             HourlyEmployee hourlyEmployee = new HourlyEmployee("Dami", "Hema", 123, 5,500m);
 
             CommissionEmployee commissionEmployee = new CommissionEmployee("Ruth", "houeman", 123, 0.07, 5000m);
@@ -18,6 +20,8 @@ namespace PayRollSystem
             Invoice invoice1 = new Invoice("Century Fan", "Standing Reachargable Fan", 1800m, 2);
 
             Invoice invoice2 = new Invoice("Projector", "EPSON Projector" , 81800m, 5);
+           // IPayment payment1 = new Invoice("Projector", "EPSON Projector", 81800m, 5);
+            //Employee employee = commissionEmployee;
             /*
             Console.WriteLine(salariedEmployee);
             Console.WriteLine($"SalariedEmployee Earnings: {salariedEmployee.Earnings():C}\n");
@@ -37,14 +41,21 @@ namespace PayRollSystem
              */
             //  List<Employee> employees = new List<Employee>() { salariedEmployee, hourlyEmployee, commissionEmployee, basePlusCommissionEmployess };
 
-            List<IPayment> paymentsDue = new List<IPayment>() { salariedEmployee, hourlyEmployee, commissionEmployee, basePlusCommissionEmployess, invoice1,invoice2 };
+            //List<IPayment> paymentsDue = new List<IPayment>() { salariedEmployee, hourlyEmployee, commissionEmployee, //basePlusCommissionEmployess, invoice1,invoice2 };
 
-            Console.WriteLine("==============POLYMORPHICALLY ACCESSING METHODS OF OBJECTS FROM CONCRETE DERIVED-CLASSES FROM ABSTRACT BASE CLASS ");
+            Console.WriteLine("==============POLYMORPHICALLY ACCESSING METHODS OF OBJECTS FROM GENERIC COLLECTION CLASS ");
+
+            PaymentCollection<IPayment> payments = new PaymentCollection<IPayment>();
+            payments.Add(salariedEmployee);
+            payments.Add(commissionEmployee);
+            payments.Add(hourlyEmployee);
+            payments.Add(basePlusCommissionEmployess);
+            payments.Add(invoice1);
+            payments.Add(invoice2);
 
 
 
-
-            foreach (var payment in paymentsDue)
+            foreach (var payment in payments)
             {
                 Console.WriteLine(payment);
                 

@@ -25,6 +25,8 @@ namespace PayRollSystem
             }
         }
 
+       
+
         public override decimal Earnings()
         {
             return WeeklySalary;
